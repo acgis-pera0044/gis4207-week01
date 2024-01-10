@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 import os
 
-def main():
-    df = pd.read_csv(r'..\..\..\..\data\census\98-401-X2016066_English_CSV_data.csv')
+def main(in_census_csv, out_summary_csv):
+    df = pd.read_csv(in_census_csv)
 
     #Show rows where the column “DIM: Profile of Census Subdivisions (2247)” has the value of “Total - Age groups and average age of the population - 100% data”
     df_rows_filtered = df.loc[df["DIM: Profile of Census Subdivisions (2247)"] == "Total - Age groups and average age of the population - 100% data"]
@@ -26,7 +26,7 @@ def main():
     df_without_x = df_renamed.loc[df_renamed["Total Pop."] != "x"]
 
     # exporting dataframe to csv
-    df_without_x.to_csv(r'..\..\..\..\data\Labs\week_01\Outputs\output.csv', index=False)
+    df_without_x.to_csv(out_summary_csv, index=False)
 
 if __name__ == '__main__':
     main()
