@@ -1,8 +1,20 @@
 import numpy as np
 import pandas as pd
 import os
+import sys
 
 def main(in_census_csv, out_summary_csv):
+    # Checking the number of arguments
+    if len(sys.argv) != 3:
+        print("Usage: population_summary.py in_census_csv out_summary_csv")
+        sys.exit()
+    
+    # Checking if in_census_csv exists
+    if not os.path.exists(in_census_csv):
+        print(f"The file {in_census_csv} does not exist.")
+        sys.exit(1)
+
+    # Creating the data frame
     df = pd.read_csv(in_census_csv)
 
     #Show rows where the column “DIM: Profile of Census Subdivisions (2247)” has the value of “Total - Age groups and average age of the population - 100% data”
