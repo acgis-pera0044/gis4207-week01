@@ -4,16 +4,6 @@ import os
 import sys
 
 def main(in_census_csv, out_summary_csv):
-    # Checking the number of arguments
-    if len(sys.argv) != 3:
-        print("Usage: population_summary.py in_census_csv out_summary_csv")
-        sys.exit()
-    
-    # Checking if in_census_csv exists
-    if not os.path.exists(in_census_csv):
-        print(f"The file {in_census_csv} does not exist.")
-        sys.exit(1)
-
     # Creating the data frame
     df = pd.read_csv(in_census_csv)
 
@@ -41,7 +31,21 @@ def main(in_census_csv, out_summary_csv):
     df_without_x.to_csv(out_summary_csv, index=False)
 
 if __name__ == '__main__':
-    main()
+    # Checking the number of arguments
+    if len(sys.argv) != 3:
+        print("Usage: population_summary.py in_census_csv out_summary_csv")
+        sys.exit()
+
+    in_census_csv = sys.argv[1]
+
+    # Checking if in_census_csv exists   
+    if not os.path.exists(in_census_csv):
+        print(f"The file {in_census_csv} does not exist.")
+        sys.exit(1)
+    
+    out_summary_csv = sys.argv[2]
+    
+    main(in_census_csv, out_summary_csv)
 
 
 
