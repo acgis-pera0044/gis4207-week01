@@ -36,11 +36,11 @@ if __name__ == '__main__':
         print("Usage: population_summary.py in_census_csv out_summary_csv")
         sys.exit()
 
-    in_census_csv = sys.argv[1]
-
     # Checking if in_census_csv exists   
-    if not os.path.exists(in_census_csv):
-        print(f"The file {in_census_csv} does not exist.")
+    if os.path.exists(sys.argv[1]):
+        in_census_csv = sys.argv[1]
+    else:
+        print(f"The file {sys.argv[1]} does not exist.")
         sys.exit(1)
     
     out_summary_csv = sys.argv[2]
